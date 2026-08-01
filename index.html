@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emprende | Inicio - Profesional e Interactivo</title>
+    
+    <!-- Fuentes Modernas -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Estilos Generales y Base --- */
+        :root {
+            --primary-color: #3498db;
+            --dark-color: #2c3e50;
+            --text-color: #555;
+            --bg-light: #f4f7f6;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 80px; /* Ajuste para el header fijo */
+            animation: fadeInBody 0.8s ease-in;
+        }
+
+        @keyframes fadeInBody {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- Header y Navegación --- */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: transparent; /* Fondo inicial transparente */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        /* Clase que se activa al hacer scroll */
+        .site-header.scrolled {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 0.8rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+        
+        .site-header.scrolled .logo {
+            color: var(--primary-color);
+        }
+
+        .nav__links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav__links a {
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        /* Subrayado interactivo en enlaces del menú */
+        .nav__links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav__links a:hover::after {
+            width: 100%;
+        }
+        
+        .site-header.scrolled .nav__links a {
+            color: var(--dark-color);
+        }
+
+        /* Botón Hamburguesa */
+        .nav__toggle {
+            display: none; /* Oculto en escritorio */
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: white;
+            transition: var(--transition);
+            z-index: 1001;
+        }
+        
+        .site-header.scrolled .nav__toggle {
+             color: var(--dark-color);
+        }
+
+        /* Animación del botón hamburguesa a X */
+        .nav__toggle.active span {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        /* Pequeño hack visual para el icono toggle */
+        .nav__icon-bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: currentColor;
+            transition: 0.3s;
+        }
+        .nav__toggle.active .bar2 { opacity: 0; }
+        .nav__toggle.active .bar1 { transform: translateY(8px) rotate(45deg); }
+        .nav__toggle.active .bar3 { transform: translateY(-8px) rotate(-45deg); }
+
+
+        /* --- Sección Hero --- */
+        .hero {
+            /* Pon tu imagen real aquí */
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagenes/fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efecto parallax suave */
+            min-height: 80vh; /* Ocupa gran parte de la pantalla */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            animation: scaleUpHero 1s ease-out;
+        }
+
+        @keyframes scaleUpHero {
+            from { opacity: 0; transform: scale(1.05); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+        
+        /* Botón de acción principal en el Hero */
+        .cta-button {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+
+        /* --- Sección Recursos --- */
+        .recursos {
+            padding: 5rem 2rem;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .recursos h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 3rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efecto de interacción potente en tarjetas */
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 5px;
+            background: var(--primary-color);
+            transition: width 0.4s;
+        }
+
+        .card:hover::before {
+            width: 100%;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+
+
+        /* --- Footer --- */
+        .site-footer {
+            background-color: var(--dark-color);
+            color: #bdc3c7;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsivo (Adaptación Móvil) --- */
+        @media (max-width: 768px) {
+            .nav__toggle {
+                display: block; /* Visible en móvil */
+            }
+
+            .nav__links {
+                display: none; /* Oculto por defecto en móvil */
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 2rem 0;
+                text-align: center;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                clip-path: circle(0% at 100% 0%); /* Animación de apertura */
+                transition: clip-path 0.6s ease-in-out;
+            }
+
+            .nav__links.active {
+                display: flex;
+                clip-path: circle(100% at 50% 50%);
+            }
+            
+             .site-header.scrolled .nav__links {
+                top: 70px;
+            }
+
+            .nav__links li {
+                margin: 1rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .recursos {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado con interactividad de scroll y responsive -->
+    <header class="site-header" id="siteHeader">
+        <nav class="nav">
+            <a href="index.html" class="logo">Emprende</a>
+            <ul class="nav__links" id="navLinks">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#recursos">Recursos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+            </ul>
+            <button class="nav__toggle" id="menuBtn" aria-label="Abrir menú">
+                <span class="nav__icon-bar bar1"></span>
+                <span class="nav__icon-bar bar2"></span>
+                <span class="nav__icon-bar bar3"></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección Hero Mejorada con Parallax y CTA -->
+        <section class="hero">
+            <h1>Convierte tu idea en un negocio</h1>
+            <p>Accede a guías, plantillas y recursos prácticos diseñados por expertos para acelerar tu camino al éxito emprendedor.</p>
+            <button class="cta-button" onclick="document.getElementById('recursos').scrollIntoView({behavior: 'smooth'})">Explorar Recursos</button>
+        </section>
+
+        <!-- Sección Recursos con Tarjetas Interactivas -->
+        <section class="recursos" id="recursos">
+            <h2>Nuestros Recursos Clave</h2>
+            <div class="cards">
+                <a href="plan-negocio.html" class="card">
+                    <h3>Plan de negocio</h3>
+                    <p>Estructura tu modelo de negocio y define tu propuesta de valor.</p>
+                </a>
+                <a href="finanzas.html" class="card">
+                    <h3>Finanzas</h3>
+                    <p>Gestiona tu flujo de caja, proyecciones y busca financiación.</p>
+                </a>
+                <a href="marketing.html" class="card">
+                    <h3>Marketing Digital</h3>
+                    <p>Estrategias para atraer clientes y hacer crecer tu marca.</p>
+                </a>
+                <a href="legal.html" class="card">
+                    <h3>Aspectos Legales</h3>
+                    <p>Información sobre constitución y trámites básicos.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 08 de Julio de 2026 | Carlos Ovidio García Ramirez.</p>
+    </footer>
+
+    <!-- JavaScript para Interactividad Global -->
+    <script>
+        // 1. Control del Header Sticky al hacer Scroll
+        const siteHeader = document.getElementById('siteHeader');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                siteHeader.classList.add('scrolled');
+            } else {
+                siteHeader.classList.remove('scrolled');
+            }
+        });
+
+        // 2. Control del Menú Móvil y Animación del Botón
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.classList.toggle('active');
+        });
+        
+        // 3. Cerrar menú al hacer click en un enlace (opcional pero recomendado)
+        document.querySelectorAll('.nav__links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.classList.remove('active');
+            });
+        });
+    </script>
+
+    <script type="module" src="/scss/src/main.ts"></script>
+</body>
+</html>

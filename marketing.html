@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing | Emprende</title>
+    
+    <!-- Fuentes Modernas -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Estilos Generales y Base --- */
+        :root {
+            --primary-color: #3498db;
+            --dark-color: #2c3e50;
+            --text-color: #555;
+            --bg-light: #f4f7f6;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+            padding-top: 80px;
+            animation: fadeInBody 0.8s ease-in;
+        }
+
+        @keyframes fadeInBody {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- Header y Navegación --- */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+        }
+
+        .nav__links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav__links a {
+            font-weight: 500;
+            color: var(--dark-color);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav__links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav__links a:hover::after {
+            width: 100%;
+        }
+
+        /* Botón Hamburguesa Móvil */
+        .nav__toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--dark-color);
+            z-index: 1001;
+        }
+
+        /* --- Contenido Principal de Marketing --- */
+        .contenedor-marketing {
+            max-width: 900px;
+            margin: 3rem auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .contenedor-marketing img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .contenedor-marketing img:hover {
+            transform: scale(1.01);
+        }
+
+        .contenedor-marketing h1 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .contenedor-marketing > p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        /* Lista Interactiva de las 4 Ps */
+        .lista-marketing {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .lista-marketing li {
+            background: #fafbfc;
+            border-left: 5px solid var(--primary-color);
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: var(--transition);
+        }
+
+        .lista-marketing li:hover {
+            transform: translateX(8px);
+            background: #f0f7ff;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.1);
+        }
+
+        .lista-marketing strong {
+            color: var(--dark-color);
+            font-size: 1.1rem;
+        }
+
+        /* --- Footer --- */
+        .site-footer {
+            background-color: var(--dark-color);
+            color: #bdc3c7;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        /* --- Responsivo --- */
+        @media (max-width: 768px) {
+            .nav__toggle {
+                display: block;
+            }
+
+            .nav__links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 2rem 0;
+                text-align: center;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav__links.active {
+                display: flex;
+            }
+
+            .contenedor-marketing {
+                margin: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .contenedor-marketing h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header class="site-header">
+        <nav class="nav">
+            <a href="index.html" class="logo">Emprende</a>
+            <ul class="nav__links" id="navLinks">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="plan-negocio.html">Plan de Negocio</a></li>
+                <li><a href="finanzas.html">Finanzas</a></li>
+                <li><a href="marketing.html">Marketing</a></li>
+            </ul>
+            <button class="nav__toggle" id="menuBtn" aria-label="Abrir menú">≡</button>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="contenedor-marketing">
+        <img src="imagenes/Marketing.jpg" alt="Estrategia de Marketing">
+        
+        <h1>Marketing</h1>
+        <p>Aprende las bases fundamentales para atraer y fidelizar clientes mediante las clásicas 4 Ps del marketing:</p>
+
+        <ul class="lista-marketing">
+            <li><strong>Producto:</strong> El bien o servicio diseñado para resolver un problema o satisfacer una necesidad específica del cliente.</li>
+            <li><strong>Precio:</strong> El valor monetario asignado al producto, que debe ser rentable para la empresa y accesible para el mercado objetivo.</li>
+            <li><strong>Plaza (Punto de venta):</strong> Los canales físicos o digitales a través de los cuales el consumidor adquiere el producto.</li>
+            <li><strong>Promoción:</strong> Las acciones de comunicación, publicidad y relaciones públicas utilizadas para dar a conocer el producto y estimular su compra.</li>
+        </ul>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="site-footer">
+        <p>© 08 de Julio de 2026 | Carlos Ovidio García Ramirez.</p>
+    </footer>
+
+    <!-- JavaScript para el menú móvil -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace en móvil
+        document.querySelectorAll('.nav__links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+
+    <script type="module" src="/scss/src/main.ts"></script>
+</body>
+</html>
